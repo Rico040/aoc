@@ -15,19 +15,9 @@ def word_to_num(word):
     return word_to_num_dict.get(word, word)
 
 for i in lines:
-    for j in range(len(i)):
-        if i[j].isdigit():
-            first = i[j]
-            break
-        word = re.findall(r'one|two|three|four|five|six|seven|eight|nine|zero', i[-j:5-j])
-        first = word_to_num(word)
-    for k in range(len(i)):
-        if i[-k-1].isdigit():
-            last = i[-k-1]
-            break
-        word = re.findall(r'one|two|three|four|five|six|seven|eight|nine|zero', i[-j:5-j])
-        second = word_to_num(word)
-    # print(first + last)
-    count += int(first + last)
+    matches = re.findall(r'one|two|three|four|five|six|seven|eight|nine|zero|[0-9]', i)
+    first = word_to_num(matches[0])
+    last = word_to_num(matches[-1])
+    count += int(str(first) + str(last))
 
 print(count)
