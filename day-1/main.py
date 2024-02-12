@@ -17,16 +17,19 @@ def word_to_num(word):
 
 
 for i in lines:
-    matches = re.findall(r'one|two|three|four|five|six|seven|eight|nine|[0-9]', i)
-    if not matches[0].isdigit():
-        first = word_to_num(matches[0])
-    else:
-        first = matches[0]
-    if not matches[-1].isdigit():
-        last = word_to_num(matches[-1])
-    else:
-        last = matches[-1]
-    count += int(str(first) + str(last))
+    matches = re.findall(r'(?=(one|two|three|four|five|six|seven|eight|nine|\d))', i)
+    print(matches)
+    if matches:
+        if not matches[0].isdigit():
+            first = word_to_num(matches[0])
+        else:
+            first = matches[0]
+        if not matches[-1].isdigit():
+            last = word_to_num(matches[-1])
+        else:
+            last = matches[-1]
+        print(first, last, i)
+        count += int(str(first) + str(last))
 
 
 print(count)
