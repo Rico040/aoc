@@ -18,7 +18,7 @@ for i in range(len(lines)):
                 break
             if j == 1 and start == 0:
                 if lines[start+length-1:start+length].find():
-                    
+                    break
             if j == 1 and spans[1] == onelinelength:
                 break
             if j == 2 and i+1 == totallines:
